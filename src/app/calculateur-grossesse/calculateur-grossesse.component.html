@@ -1,0 +1,42 @@
+
+
+
+
+
+<mat-card class="demo-inline-calendar-card">
+
+  <mat-card-content>
+    <h1 class="text">Calculateur de grossesse</h1>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label >Date des dernières règles :</mat-label>
+        <input matInput type="date"  id="ddr" [(ngModel)]="ddr">
+      </mat-form-field>
+      <p>Selected date: {{ddr | date: 'shortDate'}}</p>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Durée moyenne du cycle menstruel :</mat-label>
+        <input matInput type="number" id="cycleMoyen" [(ngModel)]="cycleMoyen">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Taux de bêta-HCG sanguine :</mat-label>
+        <input matInput type="number" id="betaHCG" [(ngModel)]="betaHCG">
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="calculer()">Calculer</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="ageGestationnel && dateAccouchement">
+  <mat-card-content>
+    <p>L'âge gestationnel est de {{ ageGestationnel }}.</p>
+    <p>La date d'accouchement probable est le {{ dateAccouchement }}.</p>
+  </mat-card-content>
+</mat-card>
+
