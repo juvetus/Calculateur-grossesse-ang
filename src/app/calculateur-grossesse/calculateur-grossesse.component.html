@@ -1,7 +1,5 @@
 
-
-
-
+<div class="container">
 
 <mat-card class="demo-inline-calendar-card">
 
@@ -10,7 +8,7 @@
     <div class="form-group">
       <mat-form-field>
         <mat-label >Date des dernières règles :</mat-label>
-        <input matInput type="date"  id="ddr" [(ngModel)]="ddr">
+        <input matInput type="date" class="calculatorDate"  id="ddr" [(ngModel)]="ddr">
       </mat-form-field>
       <p>Selected date: {{ddr | date: 'shortDate'}}</p>
     </div>
@@ -29,14 +27,21 @@
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary" (click)="calculer()">Calculer</button>
+    <button mat-raised-button class="calculate-button" color="accent"  (click)="calculer()">Calculer</button>
   </mat-card-content>
 </mat-card>
 
-<mat-card *ngIf="ageGestationnel && dateAccouchement">
+<mat-card *ngIf="ageGestationnel && dateAccouchement" [@fadeInOut] >
   <mat-card-content>
     <p>L'âge gestationnel est de {{ ageGestationnel }}.</p>
     <p>La date d'accouchement probable est le {{ dateAccouchement }}.</p>
+  <p>Vous êtes <span [ngClass]="{'green': enceinte, 'red': !enceinte}">{{ enceinte ? "enceinte 👶" : "non enceinte 🙅‍♀️" }}</span>.</p>
   </mat-card-content>
 </mat-card>
+
+
+
+</div>
+
+
 
